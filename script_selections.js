@@ -43,11 +43,6 @@ function removeValue(arr, value) {
     return arr.filter(item => item !== value);
 }
 
-function loadLocationSelectionData() {
-    // Try the user-provided name first, then fallback to existing file name in this repo.
-    return d3.csv('data/location_selection.csv').catch(() => d3.csv('data/location_select.csv'));
-}
-
 function getDefaultLocationIds(locationIdByName) {
     return [
         'Nepal',
@@ -61,7 +56,7 @@ function getDefaultLocationIds(locationIdByName) {
         .filter(Boolean);
 }
 
-loadLocationSelectionData().then(function(data) {
+d3.csv('data/location_select.csv').then(function(data) {
     const treeContainer = d3.select('#treeContainer');
     treeContainer.html('');
 

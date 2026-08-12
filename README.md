@@ -45,7 +45,7 @@ via `file://` will not work, because the browser blocks the CSV fetches.
 python -m http.server 8000
 ```
 
-Third-party libraries (d3 v7, noUiSlider, html2canvas) are vendored in
+Third-party libraries (d3 v7, noUiSlider) are vendored in
 `offlineLib/` rather than loaded from a CDN, so the dashboard works offline and
 does not depend on external hosts staying up.
 

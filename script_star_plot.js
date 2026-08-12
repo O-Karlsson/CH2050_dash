@@ -250,7 +250,7 @@ async function loadPpdFrontierScaleAssignments() {
             year: Number(d.year),
             value: Number(d.value)
         })),
-        d3.csv('data/location_selection.csv').catch(() => d3.csv('data/location_select.csv')),
+        d3.csv('data/location_select.csv'),
         d3.csv('data/pop2023.csv', (d) => ({
             lid: String(d.lid ?? '').trim(),
             pop23: Number(d.pop23)
@@ -316,7 +316,7 @@ async function loadCountryTerritoryLocationIds() {
         return countryTerritoryLocationIdsCache;
     }
 
-    const locationRows = await d3.csv('data/location_selection.csv').catch(() => d3.csv('data/location_select.csv'));
+    const locationRows = await d3.csv('data/location_select.csv');
     countryTerritoryLocationIdsCache = new Set(
         locationRows
             .filter(row => String(row.heading1 ?? '').trim() === 'Countries and territories')
@@ -455,7 +455,7 @@ async function drawPpdCountryRankTable(containerId) {
                 year: Number(d.year),
                 value: Number(d.value)
             })),
-            d3.csv('data/location_selection.csv').catch(() => d3.csv('data/location_select.csv')),
+            d3.csv('data/location_select.csv'),
             d3.csv('data/pop2023.csv', (d) => ({
                 lid: String(d.lid ?? '').trim(),
                 pop23: Number(d.pop23)
